@@ -1,12 +1,12 @@
 {
-  "name": "jwt-axios-interceptors-web",
+  "name": "jwt-axios-interceptors-frontend",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "author": "TrungQuanDev - Một Lập Trình Viên",
-  "description": "https://youtube.com/@trungquandev",
+  "author": "Trander",
+  "description": "JWT Authentication with Axios Interceptors",
   "engines": {
-    "node": "20.x"
+    "node": ">=20.x"
   },
   "scripts": {
     "dev": "vite",

@@ -1,15 +1,13 @@
-// Author: TrungQuanDev: https://youtube.com/@trungquandev
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import Login from '~/pages/Login'
 import Dashboard from '~/pages/Dashboard'
 
 /**
-* Giải pháp Clean Code trong việc xác định các route nào cần đăng nhập tài khoản xong thì mới cho truy cập
-* Sử dụng <Outlet /> của react-router-dom để hiển thị các Child Route (xem cách sử dụng trong App() bên dưới)
-* https://reactrouter.com/en/main/components/outlet
-* Một bài hướng dẫn khá đầy đủ:
-* https://www.robinwieruch.de/react-router-private-routes/
-*/
+ * Protected routes component using React Router's Outlet
+ * Clean solution for handling authentication-required routes
+ * https://reactrouter.com/en/main/components/outlet
+ * https://www.robinwieruch.de/react-router-private-routes/
+ */
 const ProtectRoutes = () => {
   const user = JSON.parse(localStorage.getItem('userInfo'))
   if (!user) return <Navigate to='/login' replace={true} />
@@ -17,6 +15,7 @@ const ProtectRoutes = () => {
 }
 
 const UnauthoziedRoutes = () => {
+  // Redirect authenticated users away from auth pages
   const user = JSON.parse(localStorage.getItem('userInfo'))
   if (user) return <Navigate to='/dashboard' replace={true} />
   return <Outlet />

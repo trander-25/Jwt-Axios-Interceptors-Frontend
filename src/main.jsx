@@ -1,13 +1,10 @@
-// Author: TrungQuanDev: https://youtube.com/@trungquandev
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import CssBaseline from '@mui/material/CssBaseline'
-
-// Config react-toastify
+// Toast notifications
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-
-// Config react-router-dom with BrowserRouter
+// Router configuration
 import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

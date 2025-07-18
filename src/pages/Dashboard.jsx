@@ -1,4 +1,3 @@
-// Author: TrungQuanDev: https://youtube.com/@trungquandev
 import { useEffect, useState } from 'react'
 import Alert from '@mui/material/Alert'
 import Box from '@mui/material/Box'
@@ -18,32 +17,18 @@ function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       const res = await authorizedAxiosInstance.get(`${API_ROOT}/v1/dashboards/access`)
-      // console.log(res.data)
-      // const userinfoFromLocalStorage = localStorage.getItem('userInfo')
-      // console.log('userinfoFromLocalStorage:', JSON.parse(userinfoFromLocalStorage))
-      setUser(res.data)
-    }
-    fetchData()
-  }, [])
-  // dup api
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await authorizedAxiosInstance.get(`${API_ROOT}/v1/dashboards/access`)
-      // console.log(res.data)
-      // const userinfoFromLocalStorage = localStorage.getItem('userInfo')
-      // console.log('userinfoFromLocalStorage:', JSON.parse(userinfoFromLocalStorage))
       setUser(res.data)
     }
     fetchData()
   }, [])
 
   const handleLogout = async () => {
-    // Gọi API Logout
+    // Call logout API
     await handleLogoutAPI()
-    // Nếu trường hợp dùng cookie thì nhớ xóa userInfo trong localStorage
+    // Remove user info from localStorage
     localStorage.removeItem('userInfo')
 
-    // Dieu huong toi trang Login khi logout thanh cong
+    // Navigate to login page after successful logout
     navigate('/login')
   }
 
@@ -73,9 +58,9 @@ function Dashboard() {
       padding: '0 1em'
     }}>
       <Alert severity="info" sx={{ '.MuiAlert-message': { overflow: 'hidden' } }}>
-        Đây là trang Dashboard sau khi user:&nbsp;
+        This is the Dashboard page accessible only after user:&nbsp;
         <Typography variant="span" sx={{ fontWeight: 'bold', '&:hover': { color: '#fdba26' } }}>{user?.email}</Typography>
-        &nbsp; đăng nhập thành công thì mới cho truy cập vào.
+        &nbsp; successfully logs in.
       </Alert>
 
       <Button
@@ -86,7 +71,7 @@ function Dashboard() {
         sx={{ mt: 2, maxWidth: 'min-content', alignSelf: 'flex-end' }}
         onClick={handleLogout}
       >
-        Loggout
+        Logout
       </Button>
 
       <Divider sx={{ my: 2 }} />

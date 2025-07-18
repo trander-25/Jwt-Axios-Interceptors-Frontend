@@ -1,4 +1,3 @@
-// Author: TrungQuanDev: https://youtube.com/@trungquandev
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { Card as MuiCard } from '@mui/material'
@@ -8,7 +7,7 @@ import Zoom from '@mui/material/Zoom'
 import Alert from '@mui/material/Alert'
 import { useForm } from 'react-hook-form'
 import Typography from '@mui/material/Typography'
-import TrungQuanDevIcon from '../assets/trungquandev-logo.png'
+import TranderIcon from '../assets/trander-logo.png'
 import authorizedAxiosInstance from '~/utils/authorizedAxios'
 import { useNavigate } from 'react-router-dom'
 import { API_ROOT } from '~/utils/constants'
@@ -18,20 +17,18 @@ function Login() {
   const navigate = useNavigate()
 
   const submitLogIn = async (data) => {
-    // console.log('submit login: ', data)
     const res = await authorizedAxiosInstance.post(`${API_ROOT}/v1/users/login`, data)
-    // console.log(res.data)
     const userInfo = {
       id: res.data.id,
       email: res.data.email
     }
 
-    // Luu thong tin token va user vao localStorage
+    // Save tokens and user info to localStorage
     localStorage.setItem('accessToken', res.data.accessToken)
     localStorage.setItem('refreshToken', res.data.refreshToken)
     localStorage.setItem('userInfo', JSON.stringify(userInfo))
 
-    // Dieu huong toi trang DashBoard khi login thanh cong
+    // Navigate to dashboard after successful login
     navigate('/dashboard')
   }
   return (
@@ -41,7 +38,7 @@ function Login() {
       minHeight: '100vh',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      background: 'url("src/assets/trungquandev-bg-img.jpeg")',
+      background: 'url("src/assets/bg-01.png")',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
@@ -50,13 +47,13 @@ function Login() {
       <form onSubmit={handleSubmit(submitLogIn)}>
         <Zoom in={true} style={{ transitionDelay: '200ms' }}>
           <MuiCard sx={{ minWidth: 380, maxWidth: 380, marginTop: '6em', p: '0.5em 0', borderRadius: 2 }}>
-            <Box sx={{ width: '70px', bgcolor: 'white', margin: '0 auto' }}>
-              <img src={TrungQuanDevIcon} alt='trungquandev' width='100%' />
+            <Box sx={{ width: '90px', bgcolor: 'white', margin: '0 auto', borderRadius: '50%', padding: '4px' }}>
+              <img src={TranderIcon} alt='trander' width='100%' style={{ borderRadius: '50%' }} />
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'center', color: theme => theme.palette.grey[500] }}>
               <Box>
-                <Typography>Hint: trungquandev.official@gmail.com</Typography>
-                <Typography>Pass: trungquandev@123</Typography>
+                <Typography>Email: trander@gmail.com</Typography>
+                <Typography>Password: trander@123</Typography>
               </Box>
             </Box>
             <Box sx={{ padding: '0 1em 1em 1em' }}>
